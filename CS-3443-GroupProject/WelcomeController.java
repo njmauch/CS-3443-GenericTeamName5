@@ -11,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
+import javafx.scene.control.SelectionMode;
 
 public class WelcomeController implements Initializable{
 	
@@ -22,10 +24,16 @@ public class WelcomeController implements Initializable{
 	@FXML
 	private Button bttnWelcome;
 	
+	@FXML
+	private ListView<String> listview;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		combobox.setItems(list);
+		//listview.setItems(list);
+		
+		//listview.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
 	}
 	
 	public void comboChanged() {
@@ -35,7 +43,14 @@ public class WelcomeController implements Initializable{
 	
 	public void buttonAction(ActionEvent event) {
 		//combobox.getItems().addAll("Jeff", "BILL", "bob");
+		//listview.getItems().addAll("Jeff", "BILL", "bob");
 		String textFromCombo = combobox.getValue();
+		System.out.println(textFromCombo);
+		//ObservableList<String> names;
+		//names = listview.getSelectionModel().getSelectedItems();
+		//for(String name: names){
+		//	System.out.println(name);}
+		
 	}
 
 }
