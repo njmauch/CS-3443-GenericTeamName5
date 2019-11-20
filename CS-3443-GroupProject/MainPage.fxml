@@ -10,5 +10,6 @@
       <Label fx:id="lblWelcome" layoutX="189.0" layoutY="278.0" prefHeight="22.0" prefWidth="179.0" text="Welcome Screen" />
       <ComboBox fx:id="combobox" layoutX="203.0" layoutY="313.0" onAction="#comboChanged" prefWidth="150.0" />
       <Button fx:id="bttnWelcome" layoutX="254.0" layoutY="373.0" mnemonicParsing="false" onAction="#buttonAction" text="Button" />
+      <ListView fx:id="listview" layoutX="346.0" layoutY="373.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </AnchorPane>

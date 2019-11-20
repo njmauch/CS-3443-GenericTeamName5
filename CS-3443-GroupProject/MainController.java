@@ -40,14 +40,31 @@ public class MainController {
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
-
+			
+			//clear username and password
+			txtfUserName.setText("");
+			txtfPassword.setText("");
 
 		}
 		
 		else {
 			lblLoginStatus.setText("Incorrect username or password");
+
 		}
 		
+	}
+	
+	public void CreateNewUser(ActionEvent event) throws Exception {
+		Parent root = FXMLLoader.load(getClass().getResource("/application/NewUser.fxml"));
+		Stage primaryStage = new Stage();
+		Scene scene = new Scene(root,600,600);
+		scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+		primaryStage.setScene(scene);
+		primaryStage.show();
+		
+		//clear username and password
+		txtfUserName.setText("");
+		txtfPassword.setText("");
 	}
 
 }
