@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="600.0" prefWidth="600.0" style="-fx-background-color: #000020; -fx-border-width: 10; -fx-border-color: #505050; -fx-border-style: solid inside;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.MainController">
+   <children>
+      <Button fx:id="bttnLogin" layoutX="263.0" layoutY="359.0" mnemonicParsing="false" onAction="#Login" text="Login">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="txtfPassword" layoutX="205.0" layoutY="320.0" promptText="password">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </PasswordField>
+      <TextField fx:id="txtfUserName" layoutX="205.0" layoutY="286.0" promptText="username">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </TextField>
+      <Label fx:id="lblLoginStatus" alignment="CENTER" contentDisplay="CENTER" layoutX="160.0" layoutY="260.0" prefHeight="18.0" prefWidth="261.0" text="Status" textFill="#35a8e1">
+         <font>
+            <Font size="12.0" />
+         </font>
+      </Label>
+      <Button fx:id="bttnNewUser" alignment="CENTER" contentDisplay="CENTER" layoutX="233.0" layoutY="400.0" mnemonicParsing="false" onAction="#CreateNewUser" prefHeight="28.0" prefWidth="114.0" text="Create New User" textAlignment="CENTER" wrapText="true" />
+      <Text fill="#0ee519" layoutX="69.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Finance Application v1.0" textAlignment="CENTER" wrappingWidth="441.78271484375">
+         <font>
+            <Font size="48.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>
