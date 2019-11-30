@@ -1,5 +1,6 @@
 package application;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.net.URL;
@@ -16,22 +17,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
-public class NewUserController implements Initializable {
+public class NewUserController {
 	
 	@FXML
 	private Button bttnregister;
-	@FXML
-	private TextField tfaccountname;
 	@FXML
 	private TextField tfpassword;
 	@FXML
 	private TextField tfconfirmpassword;
 	@FXML
-	private TextField tfusername;
-	@FXML
-	private ComboBox<String> cbaccounttype;
-	ObservableList<String> list = FXCollections.observableArrayList("Checkings", "Savings");
-	
+	private TextField tfusername;	
 	@FXML
 	public Label lblstatus;
 	
@@ -39,13 +34,11 @@ public class NewUserController implements Initializable {
 	public String username;
 	public String pass;
 	public String checkpass;
-	public String accountname;
-	public String accounttype;
+
 
 	
 	public void Register(ActionEvent event) throws Exception {
 		boolean userExists = false;
-		boolean passMatch = false;
 		
 		lblstatus.setText("");
 		//save all data from text fields
@@ -53,13 +46,20 @@ public class NewUserController implements Initializable {
 		username = tfusername.getText();
 		pass = tfpassword.getText();
 		checkpass = tfconfirmpassword.getText();
-		accountname = tfaccountname.getText();
-		accounttype = cbaccounttype.getValue();
-		
+
 		//open csv file to check username and password
 		try
 		{	
-		FileReader appcsv = new FileReader("financeapp_v1.csv");
+		//FileReader appcsv = new FileReader("financeapp_v4.csv");
+			File appcsv = new File("financeapp_v1.csv");
+			if(appcsv.createNewFile())
+			{
+				System.out.println("File created");
+			}
+			else
+			{
+				System.out.println("File already exists");
+			}
 		Scanner scnr = new Scanner(appcsv);
 		//read line by line
 		while( scnr.hasNext())
@@ -71,7 +71,7 @@ public class NewUserController implements Initializable {
 			if(tfusername.getText().equals(details[0]))
 			{
 				userExists = true;
-				appcsv.close();
+				//appcsv.close();
 				scnr.close();
 				break;
 			}
@@ -115,17 +115,11 @@ public class NewUserController implements Initializable {
 			username = "";
 			pass = "";
 			checkpass = "";
-			accountname = "";
-			accounttype = "";
-			
-			
+
 			//reset all text fields
 			tfusername.setText("");
 			tfpassword.setText("");
-			tfconfirmpassword.setText("");
-			tfaccountname.setText("");
-			
-			
+			tfconfirmpassword.setText("");			
 		}
 		else {
 			lblstatus.setText("User registration failed");
@@ -133,21 +127,11 @@ public class NewUserController implements Initializable {
 			username = "";
 			pass = "";
 			checkpass = "";
-			accountname = "";
-			accounttype = "";
 			//reset all text fields
 			tfusername.setText("");
 			tfpassword.setText("");
 			tfconfirmpassword.setText("");
-			tfaccountname.setText("");
 		}
 		
 	}
-	
-	
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		cbaccounttype.setItems(list);		
-	}
-
 }
