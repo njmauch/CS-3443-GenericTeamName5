@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #000020; -fx-border-style: solid inside; -fx-border-width: 10; -fx-border-color: #505050;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.PaycheckController">
+   <children>
+      <Label alignment="CENTER" layoutX="172.0" layoutY="47.0" prefHeight="35.0" prefWidth="258.0" text="Paycheck Calculator" textFill="#8f9bc9">
+         <font>
+            <Font size="28.0" />
+         </font></Label>
+      <TextField fx:id="tfEnterHours" layoutX="136.0" layoutY="143.0" prefHeight="22.0" prefWidth="116.0" promptText="Enter hours worked" />
+      <TextField fx:id="tfEnterWage" layoutX="265.0" layoutY="143.0" prefHeight="22.0" prefWidth="106.0" promptText="Enter hourly wage" />
+      <Button fx:id="bttnCalculate" layoutX="392.0" layoutY="143.0" mnemonicParsing="false" onAction="#calculate" text="Calculate!" />
+      <Label layoutX="194.0" layoutY="193.0" text="Before tax" textFill="#78c93e" />
+      <Label layoutX="198.0" layoutY="218.0" text="After tax" textFill="#eb6464" />
+      <TextField fx:id="tfBeforeTax" layoutX="251.0" layoutY="189.0" />
+      <TextField fx:id="tfAfterTax" layoutX="251.0" layoutY="214.0" />
+      <Label fx:id="lblTips" alignment="CENTER" layoutX="155.0" layoutY="281.0" prefHeight="76.0" prefWidth="291.0" textAlignment="CENTER" textFill="#dddba6" wrapText="true" />
+      <Label layoutX="136.0" layoutY="122.0" prefHeight="14.0" prefWidth="106.0" text="Enter hours worked" textFill="#dddb57" />
+      <Label layoutX="265.0" layoutY="122.0" prefHeight="14.0" prefWidth="106.0" text="Enter hourly wage" textFill="#dddb57" />
+      <Button fx:id="bttnReset" layoutX="294.0" layoutY="245.0" mnemonicParsing="false" onAction="#reset" text="Reset" />
+   </children>
+</AnchorPane>
