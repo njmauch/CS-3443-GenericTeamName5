@@ -7,22 +7,24 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.text.NumberFormat;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AccountController implements Initializable {
 	@FXML
@@ -30,7 +32,13 @@ public class AccountController implements Initializable {
 	@FXML
 	public Label welcomeName;
 	@FXML
+	public Label goToLabel;
+	@FXML
 	public Button initialButton;
+	@FXML
+	public Button paycheckButton;
+	@FXML
+	public Button spendButton;
 	@FXML
 	public Button submitTran;
 	@FXML
@@ -56,6 +64,7 @@ public class AccountController implements Initializable {
 	
 	public static float accountBalance;
 	public String fileName;
+	public String userIdentity;
 	
 	public ArrayList<AccountTransactions> accountTransactions;
 	NumberFormat formatter = NumberFormat.getCurrencyInstance();
@@ -66,16 +75,19 @@ public class AccountController implements Initializable {
 	public ComboBox<String> combobox2;
 	
 	ObservableList<String> list1 = FXCollections.observableArrayList("Withdrawal", "Deposit");
-	ObservableList<String> list2 = FXCollections.observableArrayList("Rent/Mortgage", "Utilities", "Bills", "Groceries", "Food", "Other");
+	ObservableList<String> list2 = FXCollections.observableArrayList("Rent/Mortgage", "Utilities", "Bills", "Groceries", "Food", "Other", "Paycheck", "General Deposit");
 	
 	public void Welcome (String userName) {
-		
+		userIdentity = userName;
 		this.accountTransactions = new ArrayList<AccountTransactions>();
 		fileName = userName + ".csv";
 		File file = new File(fileName);
 		try {
 			if(file.createNewFile()) {
 				enterTran.setVisible(false);
+				goToLabel.setVisible(false);
+				paycheckButton.setVisible(false);
+				spendButton.setVisible(false);
 				depWith.setVisible(false);
 				date.setVisible(false);
 				description.setVisible(false);
@@ -198,6 +210,9 @@ public class AccountController implements Initializable {
 		combobox2.setVisible(true);
 		dateTran.setVisible(true);
 		submitTran.setVisible(true);
+		goToLabel.setVisible(true);
+		spendButton.setVisible(true);
+		paycheckButton.setVisible(true);
 		loadTranTable();
 	}
 	@Override
@@ -217,5 +232,47 @@ public class AccountController implements Initializable {
 			stringFormat += accountTransactions.get(i).toString();
 		}
 		return stringFormat;
+	}
+	public void actionButton4(ActionEvent event) {
+		try {
+			//UPDATE THIS LINE
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Spending.fxml"));
+
+			Parent root = loader.load();
+			//get controller for welcome
+			SpendingController spendingController = loader.getController();
+			//pass username
+			spendingController.startUp(userIdentity);
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Spending breakdown");
+			stage.show();
+			}
+			catch (Exception ex)
+			{
+				System.out.println("load next controller " + ex);
+			}
+	}
+	public void actionButton5(ActionEvent event) {
+		try {
+			//UPDATE THIS LINE
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/PaycheckCalculator.fxml"));
+
+			Parent root = loader.load();
+			//get controller for welcome
+			PaycheckController paycheckController = loader.getController();
+			//pass username
+			paycheckController.setWelcome(userIdentity);
+			
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root));
+			stage.setTitle("Paycheck Calculator");
+			stage.show();
+			}
+			catch (Exception ex)
+			{
+				System.out.println("load next controller " + ex);
+			}
 	}
 }

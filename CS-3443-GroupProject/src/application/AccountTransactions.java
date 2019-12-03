@@ -24,7 +24,7 @@ public class AccountTransactions {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public String transactionDescription() {
+	public String getTransactionDescription() {
 		return transactionDescription;
 	}
 	public void setTransactionDescriptions(String transactionDescription) {

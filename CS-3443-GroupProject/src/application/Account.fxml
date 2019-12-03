@@ -31,5 +31,8 @@
       <Label fx:id="amountLabel" layoutX="586.0" layoutY="184.0" prefHeight="17.0" prefWidth="79.0" text="Amount:" />
       <TextField fx:id="amountTran" layoutX="586.0" layoutY="201.0" promptText="0.00" />
       <Button fx:id="submitTran" layoutX="772.0" layoutY="201.0" mnemonicParsing="false" onAction="#actionButton3" text="Submit" />
+      <Label fx:id="goToLabel" layoutX="436.0" layoutY="126.0" prefHeight="31.0" prefWidth="38.0" text="Go to: " />
+      <Button fx:id="spendButton" layoutX="474.0" layoutY="130.0" mnemonicParsing="false" onAction="#actionButton4" text="Spending breakdown" />
+      <Button fx:id="paycheckButton" layoutX="614.0" layoutY="130.0" mnemonicParsing="false" onAction="#actionButton5" text="Paycheck calculator" />
    </children>
 </AnchorPane>

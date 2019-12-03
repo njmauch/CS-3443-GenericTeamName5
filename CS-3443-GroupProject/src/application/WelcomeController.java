@@ -96,8 +96,7 @@ public class WelcomeController implements Initializable{
 		//call to spending breakdown
 		if(textFromCombo.equals("Spending breadown")) 
 		{
-			System.out.println("Spending breadown");
-			//loadSpendingBreakdownController(username);		
+			loadSpendingBreakdownController(username);	
 		}
 		
 		
@@ -155,15 +154,15 @@ public class WelcomeController implements Initializable{
 	{
 		try {
 			//UPDATE THIS LINE
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/MainPage.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Spending.fxml"));
 			//
 			//
 			//
 			Parent root = loader.load();
 			//get controller for welcome
-			WelcomeController welcomeController = loader.getController();
+			SpendingController spendingController = loader.getController();
 			//pass username
-			welcomeController.setWelcome(userName);
+			spendingController.startUp(userName);
 			
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
