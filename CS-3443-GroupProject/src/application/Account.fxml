@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
@@ -9,16 +10,26 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.AccountController">
    <children>
       <Label fx:id="welcomeName" layoutX="80.0" layoutY="42.0" prefHeight="59.0" prefWidth="335.0" />
-      <Label layoutX="429.0" layoutY="233.0" prefHeight="39.0" prefWidth="321.0" text="Here is your current account info." />
-      <ListView fx:id="myAccountInfo" layoutX="431.0" layoutY="287.0" prefHeight="350.0" prefWidth="450.0" />
+      <Label layoutX="41.0" layoutY="233.0" prefHeight="39.0" prefWidth="321.0" text="Here is your current account info." />
+      <ListView fx:id="myAccountInfo" layoutX="41.0" layoutY="287.0" prefHeight="350.0" prefWidth="840.0" />
       <Label fx:id="initialText" layoutX="450.0" layoutY="53.0" prefHeight="31.0" prefWidth="137.0" text="Enter your initial balance: " />
       <TextField fx:id="initialAmount" layoutX="586.0" layoutY="56.0" />
       <Button fx:id="initialButton" layoutX="586.0" layoutY="89.0" mnemonicParsing="false" onAction="#actionButton2" text="Set Amount" />
-      <Label layoutX="431.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Date" />
-      <Label layoutX="556.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Description" />
-      <Label layoutX="673.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Amount" />
+      <Label layoutX="41.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Date" />
+      <Label layoutX="194.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Description" />
+      <Label layoutX="598.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Amount" />
       <Label alignment="CENTER_RIGHT" layoutX="756.0" layoutY="272.0" prefHeight="17.0" prefWidth="125.0" text="Current Balance" />
       <Label layoutX="640.0" layoutY="637.0" prefHeight="31.0" prefWidth="102.0" text="Current Balance:" />
       <Label fx:id="currBalance" layoutX="798.0" layoutY="637.0" prefHeight="31.0" prefWidth="79.0" />
+      <ComboBox fx:id="combobox1" layoutX="41.0" layoutY="201.0" prefHeight="25.0" prefWidth="96.0" />
+      <Label fx:id="enterTran" layoutX="41.0" layoutY="134.0" prefHeight="17.0" prefWidth="164.0" text="Enter your transcation:" />
+      <Label fx:id="depWith" layoutX="41.0" layoutY="184.0" prefHeight="17.0" prefWidth="108.0" text="Depost/Withdrawal:" />
+      <Label fx:id="date" layoutX="194.0" layoutY="184.0" prefHeight="17.0" prefWidth="108.0" text="Date:" />
+      <TextField fx:id="dateTran" layoutX="194.0" layoutY="201.0" promptText="MM/DD/YYYY" />
+      <Label fx:id="description" layoutX="404.0" layoutY="184.0" prefHeight="17.0" prefWidth="164.0" text="Description:" />
+      <ComboBox fx:id="combobox2" layoutX="404.0" layoutY="201.0" prefWidth="150.0" />
+      <Label fx:id="amountLabel" layoutX="586.0" layoutY="184.0" prefHeight="17.0" prefWidth="79.0" text="Amount:" />
+      <TextField fx:id="amountTran" layoutX="586.0" layoutY="201.0" promptText="0.00" />
+      <Button fx:id="submitTran" layoutX="772.0" layoutY="201.0" mnemonicParsing="false" onAction="#actionButton3" text="Submit" />
    </children>
 </AnchorPane>
