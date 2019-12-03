@@ -1,16 +1,21 @@
 package application;
 
+import java.text.NumberFormat;
+
 public class AccountTransactions {
 	private String date;
 	private String transactionDescription;
 	private float amount;
-	private static float balance;
+	private float balance;
+	private float saved;
+	NumberFormat formatter = NumberFormat.getCurrencyInstance();
 	
-	public AccountTransactions(String date, String transactionDescription, float amount, float balance) {
+	public AccountTransactions(String date, String transactionDescription, float amount, float balance, float saved) {
 		this.date = date;
 		this.transactionDescription = transactionDescription;
 		this.amount = amount;
-		AccountTransactions.balance = balance;
+		this.balance = balance;
+		this.saved = saved;
 	}
 	public String getDate()
 	{
@@ -35,10 +40,40 @@ public class AccountTransactions {
 		return balance;
 	}
 	public void setBalance(float balance) {
-		AccountTransactions.balance = balance;
+		this.balance = balance;
+	}
+	public void setSaved(float saved) {
+		this.saved = saved;
+	}
+	public float getSaved() {
+		return saved;
 	}
 	
+	
 	public String toString() {
-		return (this.date + "\t" + this.transactionDescription + "\t" + String.valueOf(this.amount) + "\t\t" + String.valueOf(this.balance));
+		int temp;
+		String stringFormat = date;
+		temp = 36 - date.length();
+		for(int i=0; i<temp; i++)
+		{
+			stringFormat += " ";
+		}
+		
+		stringFormat += transactionDescription;
+		temp = 130 - transactionDescription.length();
+		for(int i=0; i<temp; i++)
+		{
+			stringFormat += " ";
+		}
+
+		stringFormat += formatter.format(amount);
+		temp = 50 - String.valueOf(balance).length();
+		for(int i=0; i<temp; i++)
+		{
+			stringFormat += " ";
+		}
+
+		stringFormat += formatter.format(balance);
+		return stringFormat;
 	}
 }
