@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
@@ -33,23 +34,18 @@ public class SpendingController implements Initializable {
 	@FXML
 	ObservableList<PieChart.Data> pieChartData;
 	@FXML
-	public PieChart spendChart;
+	public PieChart spendChart = new PieChart();
 	@FXML
 	public Label savedLabel;
+	public String fileName;
 	
 	NumberFormat formatter = NumberFormat.getCurrencyInstance();
 	
-	public void startUp(String userName) throws FileNotFoundException
+	public void StartUp (String userName) throws FileNotFoundException
 	{
-		rent = 0;
-		utilities = 0;
-		bills = 0;
-		groceries = 0;
-		total = 0;
-		food = 0;
-		luxuries = 0;
-		user = userName;
-		String fileName = userName + ".csv";
+		this.user = userName;
+		this.accountSpendTransactions = new ArrayList<AccountTransactions>();
+		fileName = userName + ".csv";
 		File file = new File(fileName);
 		Scanner inputStream = new Scanner(file);
 		
@@ -60,9 +56,20 @@ public class SpendingController implements Initializable {
 			accountSpendTransactions.add(tempSpendTrans);
 			
 		}
+		inputStream.close();
+		rent = 0;
+		utilities = 0;
+		bills = 0;
+		groceries = 0;
+		total = 0;
+		food = 0;
+		luxuries = 0;
+		
 		AccountTransactions lastTran = accountSpendTransactions.get(accountSpendTransactions.size()-1);
 		float currentBalance = lastTran.getBalance();
 		total += currentBalance;
+		float possibleSaved = lastTran.getSaved();
+		savedLabel.setText(formatter.format(possibleSaved));
 		
 		for(int i = 0; i < accountSpendTransactions.size(); i++)
 		{
@@ -90,27 +97,24 @@ public class SpendingController implements Initializable {
 			else if(tempTrans.getTransactionDescription().equals("Other"))
 			{
 				luxuries += tempTrans.getAmount();
-			}
-			total = rent + utilities + bills + groceries + food + luxuries;
-			pieChartData = FXCollections.observableArrayList(
-					new PieChart.Data("Rent\\Mortgage", rent/total),
-					new PieChart.Data("Utilities", utilities/total),
-					new PieChart.Data("Bills", bills/total),
-					new PieChart.Data("Groceries", groceries/total),
-					new PieChart.Data("Food", food/total),
-					new PieChart.Data("Luxuries", luxuries/total),
-					new PieChart.Data("Available Balance", currentBalance/total));
-			spendChart = new PieChart(pieChartData);
-			spendChart.setTitle("Spending Breakdown");
+			}		
 		}
-		inputStream.close();
+		total = rent + utilities + bills + groceries + food + luxuries;
+		pieChartData = FXCollections.observableArrayList(
+				new PieChart.Data("Rent\\Mortgage", (rent/total)),
+				new PieChart.Data("Utilities", (utilities/total)),
+				new PieChart.Data("Bills", (bills/total)),
+				new PieChart.Data("Groceries", (groceries/total)),
+				new PieChart.Data("Food", (food/total)),
+				new PieChart.Data("Luxuries", (luxuries/total)),
+				new PieChart.Data("Available Balance", (currentBalance/total)));
+		spendChart.setData(pieChartData);
+		spendChart.setTitle("Spending Breakdown");
+		spendChart.setLegendSide(Side.LEFT);
 	}
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
-		AccountTransactions lastTran = accountSpendTransactions.get(accountSpendTransactions.size()-1);
-		float possibleSaved = lastTran.getSaved();
-		savedLabel.setText(formatter.format(possibleSaved));
+		// TODO Auto-generated method stub		
 	}
 	public void actionButton1(ActionEvent event) {
 		try {

@@ -4,15 +4,18 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="675.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SpendingController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="522.0" prefWidth="675.0" style="-fx-background-color: #000020; -fx-border-style: solid inside; -fx-border-color: #505050; -fx-border-width: 10;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SpendingController">
    <children>
-      <PieChart fx:id="spendChart" layoutY="6.0" prefHeight="352.0" prefWidth="440.0" title="Spending breakdown" />
+      <PieChart fx:id="spendChart" layoutY="27.0" prefHeight="352.0" prefWidth="675.0" title="Spending breakdown" />
       <Button layoutX="479.0" layoutY="39.0" mnemonicParsing="false" onAction="#actionButton1" text="Account" />
       <Button layoutX="547.0" layoutY="39.0" mnemonicParsing="false" onAction="#actionButton2" text="Paycheck Calculator" />
-      <Label layoutX="479.0" layoutY="14.0" prefHeight="25.0" prefWidth="82.0" text="Go to:" />
-      <Label layoutX="88.0" layoutY="406.0" prefHeight="63.0" prefWidth="346.0" text="How much you could have saved rounding each transaction up:" />
-      <Label fx:id="savedLabel" layoutX="440.0" layoutY="429.0" prefHeight="18.0" prefWidth="103.0" />
+      <Label layoutX="479.0" layoutY="14.0" prefHeight="25.0" prefWidth="82.0" text="Go to:" textFill="#0ee519" />
+      <Label layoutX="88.0" layoutY="406.0" prefHeight="63.0" prefWidth="346.0" text="How much you could have saved rounding each transaction up:" textFill="#0ee519" />
+      <Label fx:id="savedLabel" layoutX="440.0" layoutY="429.0" prefHeight="43.0" prefWidth="137.0" textFill="#0ee519">
+         <font>
+            <Font size="24.0" />
+         </font></Label>
    </children>
 </AnchorPane>

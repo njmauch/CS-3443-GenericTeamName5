@@ -233,26 +233,21 @@ public class AccountController implements Initializable {
 		}
 		return stringFormat;
 	}
-	public void actionButton4(ActionEvent event) {
+	public void actionButton4(ActionEvent event) 
+	{
 		try {
-			//UPDATE THIS LINE
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Spending.fxml"));
-
 			Parent root = loader.load();
-			//get controller for welcome
 			SpendingController spendingController = loader.getController();
-			//pass username
-			spendingController.startUp(userIdentity);
-			
+			spendingController.StartUp(userIdentity);
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
-			stage.setTitle("Spending breakdown");
+			stage.setTitle("Spending Breakdown");
 			stage.show();
-			}
-			catch (Exception ex)
-			{
-				System.out.println("load next controller " + ex);
-			}
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 	public void actionButton5(ActionEvent event) {
 		try {

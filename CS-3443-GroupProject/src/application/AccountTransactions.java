@@ -60,7 +60,7 @@ public class AccountTransactions {
 		}
 		
 		stringFormat += transactionDescription;
-		temp = 130 - transactionDescription.length();
+		temp = 105 - transactionDescription.length();
 		for(int i=0; i<temp; i++)
 		{
 			stringFormat += " ";

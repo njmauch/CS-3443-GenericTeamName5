@@ -15,8 +15,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SelectionMode;
 import javafx.stage.Stage;
 
 public class WelcomeController implements Initializable{
@@ -162,7 +160,7 @@ public class WelcomeController implements Initializable{
 			//get controller for welcome
 			SpendingController spendingController = loader.getController();
 			//pass username
-			spendingController.startUp(userName);
+			spendingController.StartUp(userName);
 			
 			Stage stage = new Stage();
 			stage.setScene(new Scene(root));
