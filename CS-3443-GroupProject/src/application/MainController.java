@@ -12,7 +12,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
+/**
+ * 
+ * @author Tyler Frank
+ * Main controller of the program that is designed to control the login 
+ * scene.  
+ */
 public class MainController {
 	
 	@FXML
@@ -28,7 +33,11 @@ public class MainController {
 	
 	
 	
-	
+	/**
+	 * 
+	 * @param event Action event button
+	 * @throws Exception if can't open file throw exception
+	 */
 	public void Login(ActionEvent event) throws Exception {
 		boolean usernameExists = false;
 		boolean pwMatches = false;
@@ -111,7 +120,11 @@ public class MainController {
 				System.out.println("load next controller " + ex);
 			}
 	}
-	
+	/**
+	 * 
+	 * @param event Action event button
+	 * @throws Exception if can't open scene throw exception
+	 */
 	public void CreateNewUser(ActionEvent event) throws Exception {
 		Parent root = FXMLLoader.load(getClass().getResource("/application/NewUser.fxml"));
 		Stage primaryStage = new Stage();

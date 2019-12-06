@@ -16,7 +16,14 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author Tyler Frank
+ * Welcome controller is displayed after the user logs into their account
+ * and shows tips of how to save money and gives them options of what page
+ * they want to navigate to. The account, paycheck, or spending breakdown 
+ * pages
+ */
 public class WelcomeController implements Initializable{
 	
 	@FXML
@@ -38,7 +45,7 @@ public class WelcomeController implements Initializable{
 			"Spend extra or unexpected income wisely, such as toward debt",
 			"Reduce energy costs, turn the heat down when you're not home",
 			"Unsubscribe from emails, you won't be tempted by email promotions",
-			"Borrow—don’t buy, see if you can borrow from your friends/family first",
+			"Borrowï¿½donï¿½t buy, see if you can borrow from your friends/family first",
 			"Pack lunch and eat at home",
 			"Ask about discounts (and pay in cash)",
 			"Take advantage of your retirement savings plan",
@@ -47,7 +54,7 @@ public class WelcomeController implements Initializable{
 			"DIY . . . everything!",
 			"Skip the coffee shop",
 			"The library is your friend",
-			"Sell everything (that doesn’t bring you joy)");
+			"Sell everything (that doesnï¿½t bring you joy)");
 	
 	@FXML
 	public Label lblTips;
@@ -61,7 +68,10 @@ public class WelcomeController implements Initializable{
 		// TODO Auto-generated method stub
 		combobox.setItems(list);
 	}
-	
+	/**
+	 * Welcomes the customer to the application
+	 * @param username1 customers username
+	 */
 	public void setWelcome(String username1){
 		username = username1;
 		lblWelcome.setText("Welcome " + username + "!");
@@ -69,13 +79,19 @@ public class WelcomeController implements Initializable{
 		int randy = rand.nextInt(19);
 		lblTips.setText(tips.get(randy));
 	}
-	
+	/**
+	 * Allows customer to change the tips being displayed
+	 * @param event Action event button
+	 */
 	public void getNewTip(ActionEvent event) {
 		Random rand = new Random(); 
 		int randy = rand.nextInt(19);
 		lblTips.setText(tips.get(randy));
 	}
-	
+	/**
+	 * Gets the page the customer wishes to navigate to
+	 * @param event action event button
+	 */
 	public void buttonAction(ActionEvent event) {
 		String textFromCombo = combobox.getValue();
 		

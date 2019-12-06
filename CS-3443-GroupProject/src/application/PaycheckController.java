@@ -9,9 +9,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+/**
+ * 
+ * @author Tyler Frank
+ * Paycheck Controller is in charge of generating an estimated amount of you
+ * next paycheck based on hours and hourly rate.  
+ */
 public class PaycheckController {
-	
+	//List of tips that randomly display to screen to help customer save money
 	ObservableList<String> tips = FXCollections.observableArrayList("Pay off smaller debt first",
 			"Cut down on groceries by planning your meals and using grocery pickup",
 			"Cancel automatic subscriptions and memberships",
@@ -21,7 +26,7 @@ public class PaycheckController {
 			"Spend extra or unexpected income wisely, such as toward debt",
 			"Reduce energy costs, turn the heat down when you're not home",
 			"Unsubscribe from emails, you won't be tempted by email promotions",
-			"Borrow—don’t buy, see if you can borrow from your friends/family first",
+			"Borrowï¿½donï¿½t buy, see if you can borrow from your friends/family first",
 			"Pack lunch and eat at home",
 			"Ask about discounts (and pay in cash)",
 			"Take advantage of your retirement savings plan",
@@ -30,7 +35,7 @@ public class PaycheckController {
 			"DIY . . . everything!",
 			"Skip the coffee shop",
 			"The library is your friend",
-			"Sell everything (that doesn’t bring you joy)");
+			"Sell everything (that doesnï¿½t bring you joy)");
 	
 	@FXML
 	public Label lblTips;
@@ -60,7 +65,12 @@ public class PaycheckController {
 		tfBeforeTax.setText("");
 		tfAfterTax.setText("");
 	}
-	
+	/**
+	 * 
+	 * @param event
+	 * Takes in parameters of hours worked and hourly rate then displays
+	 * estimate of next check before and after taxes
+	 */
 	public void calculate(ActionEvent event) {
 		
 		double hoursWorked;

@@ -1,4 +1,4 @@
-package application;
+ package application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,7 +20,15 @@ import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
-
+/**
+ * 
+ * @author nathanmauch
+ * Spending Controller sets the scene for the spending breakdown. Displays a pie chart 
+ * of all of the transactions and legend of the transactions.  Also displays
+ * the amount of what possibly could be saved if you saved the change from rounding
+ * each transaction up to the next full dollar
+ *
+ */
 public class SpendingController implements Initializable {
 	public float rent;
 	public float utilities;
@@ -30,6 +38,8 @@ public class SpendingController implements Initializable {
 	public float food;
 	public float luxuries;
 	public String user;
+	//Array List to get totals for different amounts spent for various 
+	//types of transactions
 	public ArrayList<AccountTransactions> accountSpendTransactions;
 	@FXML
 	ObservableList<PieChart.Data> pieChartData;
@@ -40,9 +50,16 @@ public class SpendingController implements Initializable {
 	public String fileName;
 	
 	NumberFormat formatter = NumberFormat.getCurrencyInstance();
-	
+	/**
+	 * 
+	 * @param userName Customers user name
+	 * @throws FileNotFoundException
+	 * Stat up loads up the customers transaction file and inserts all of the transactions
+	 * in an array list 
+	 */
 	public void StartUp (String userName) throws FileNotFoundException
 	{
+		//getting the file name then reads all of the transactions into the array list
 		this.user = userName;
 		this.accountSpendTransactions = new ArrayList<AccountTransactions>();
 		fileName = userName + ".csv";
@@ -57,6 +74,7 @@ public class SpendingController implements Initializable {
 			
 		}
 		inputStream.close();
+		//set initial amounts of the different types of transactions
 		rent = 0;
 		utilities = 0;
 		bills = 0;
@@ -64,13 +82,14 @@ public class SpendingController implements Initializable {
 		total = 0;
 		food = 0;
 		luxuries = 0;
-		
+		//Gets the current balance and the amount possible saved
 		AccountTransactions lastTran = accountSpendTransactions.get(accountSpendTransactions.size()-1);
 		float currentBalance = lastTran.getBalance();
 		total += currentBalance;
 		float possibleSaved = lastTran.getSaved();
 		savedLabel.setText(formatter.format(possibleSaved));
-		
+		//Loops through each transaction and adds amount of the different types into a total
+		//amount of each type of transaction
 		for(int i = 0; i < accountSpendTransactions.size(); i++)
 		{
 			AccountTransactions tempTrans = accountSpendTransactions.get(i);
@@ -99,7 +118,9 @@ public class SpendingController implements Initializable {
 				luxuries += tempTrans.getAmount();
 			}		
 		}
+		//gets the total amount of current balance and withdrawals
 		total = rent + utilities + bills + groceries + food + luxuries;
+		//loads the percentages of each transaction type into the pie chart
 		pieChartData = FXCollections.observableArrayList(
 				new PieChart.Data("Rent\\Mortgage", (rent/total)),
 				new PieChart.Data("Utilities", (utilities/total)),
@@ -116,6 +137,13 @@ public class SpendingController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub		
 	}
+	/**
+	 * 
+	 * @param event
+	 * actionButton1
+	 * Loads the account scene and controller to bring the customer back to the account
+	 * page
+	 */
 	public void actionButton1(ActionEvent event) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/application/Account.fxml"));
@@ -135,6 +163,13 @@ public class SpendingController implements Initializable {
 				System.out.println("load next controller " + ex);
 			}
 	}
+	/**
+	 * 
+	 * @param event
+	 * Action button 2
+	 * Loads the Paycheck calculator and controller to bring the customer
+	 * to the paycheck calculator.
+	 */
 	public void actionButton2(ActionEvent event) {
 		try {
 			//UPDATE THIS LINE

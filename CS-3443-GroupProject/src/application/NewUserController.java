@@ -8,7 +8,14 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-
+/**
+ * 
+ * @author Tyler Frank
+ * New User controller that is in charge of setting the scene for
+ * creating a new user and controls the process of creating a new
+ * user for the app setting their username and password
+ *
+ */
 public class NewUserController {
 	
 	@FXML
@@ -28,7 +35,11 @@ public class NewUserController {
 	public String checkpass;
 
 
-	
+	/**
+	 * 
+	 * @param event Action event button
+	 * @throws Exception Throws
+	 */
 	public void Register(ActionEvent event) throws Exception {
 		boolean userExists = false;
 		

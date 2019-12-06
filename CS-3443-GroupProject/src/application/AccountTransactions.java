@@ -1,7 +1,13 @@
 package application;
 
 import java.text.NumberFormat;
-
+/**
+ * 
+ * @author nathanmauch
+ * AccountTransactions is a model class that creates the array list needed for the
+ * account and spending controller.  It takes the values that are passed to it from 
+ * reading the customers transaction file and inserts them into an array list
+ */
 public class AccountTransactions {
 	private String date;
 	private String transactionDescription;
@@ -9,7 +15,14 @@ public class AccountTransactions {
 	private float balance;
 	private float saved;
 	NumberFormat formatter = NumberFormat.getCurrencyInstance();
-	
+	/**
+	 * 
+	 * @param date Date of the transaction
+	 * @param transactionDescription Type of transaction
+	 * @param amount Amount of transaction
+	 * @param balance Current Balance
+	 * @param saved Possible saved amount
+	 */
 	public AccountTransactions(String date, String transactionDescription, float amount, float balance, float saved) {
 		this.date = date;
 		this.transactionDescription = transactionDescription;
@@ -17,6 +30,10 @@ public class AccountTransactions {
 		this.balance = balance;
 		this.saved = saved;
 	}
+	/*
+	 * 
+	 * Getter and setters for the values in the array accountTransactions
+	 */
 	public String getDate()
 	{
 		return date;
@@ -49,7 +66,10 @@ public class AccountTransactions {
 		return saved;
 	}
 	
-	
+	/**
+	 * toString formats the accounts transactions in a format to be properly displayed
+	 * to the screen.
+	 */
 	public String toString() {
 		int temp;
 		String stringFormat = date;

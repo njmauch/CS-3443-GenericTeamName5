@@ -1,5 +1,8 @@
 package application;
-	
+/**
+ * Main class to initialize the General Finance v1.0 application
+ * @author Tyler Frank and Nathan Mauch
+ */
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
